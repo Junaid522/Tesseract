@@ -525,6 +525,3 @@ if __name__ == '__main__':
 
 # data = re.sub(r'([\§\|\-\|\—])', '', data)
 # print(data)
-
-# AWS_ACCESS_KEY_ID = 'AKIARPYGV4K26QUQZOHJ'
-# AWS_SECRET_ACCESS_KEY = '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'

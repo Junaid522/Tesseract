@@ -450,13 +450,64 @@ def bell_reader():
         # return data
 
 
+def tax_payer():
+    print("In tax_payer parser")
+
+    img = cv2.imread('tax-payer/A-J.png', cv2.IMREAD_GRAYSCALE)
+
+    img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 103, 5)
+    # cv2.imshow('th3', th3)
+    # cv2.waitKey(0)
+
+    data = pytesseract.image_to_string(th3)
+    data = re.sub(r'([\§\|\-\|\—])', '', data)
+
+    # data =" ".join(data.split('\n'))
+    data = data.replace("  ", " ")
+    data = data.replace(".", "")
+    print(data)
+    lines = data.splitlines()
+    company_name = ""
+    business_number = ""
+    year = ""
+    dict_data = {}
+
+    header = ['Company Name', 'Business Number', 'Year']
+    with open('tax_payer.csv', 'w') as f:
+        for item in header:
+            f.write(str(item) + ', ')
+        f.write('\n')
+    for l in lines:
+        words = l.split(' ')
+        for w in range(len(words)):
+            if words[w].__contains__('TED') or words[w].__contains__('INC') or words[w].__contains__('CORP') or words[w].__contains__('TION') or words[w].__contains__('LTD'):
+                company_name = words[0:w+1]
+                # print(company_name)
+                seperator = ' '
+                company_name = seperator.join(company_name)
+                # print(company_name)
+                business_number = words[w]
+                # print(business_number)
+                year = words[w]
+                # print(year)
+                dict_data = [company_name, business_number, year]
+                with open('tax_payer.csv', 'a') as f:
+                    for item in dict_data:
+                        f.write(str(item) + ', ')
+                    f.write('\n')
+
+
+
+
 def main():
     # co_op_reader()
     # uber_reader()
     # sask_power_reader()
     # amex_reader()
-    settlement_parser()
+    # settlement_parser()
     # bell_reader()
+    tax_payer()
 
 if __name__ == '__main__':
     main()

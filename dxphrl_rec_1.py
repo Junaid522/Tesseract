@@ -506,8 +506,8 @@ def main():
     # sask_power_reader()
     # amex_reader()
     # settlement_parser()
-    # bell_reader()
-    tax_payer()
+    bell_reader()
+    # tax_payers()
 
 if __name__ == '__main__':
     main()

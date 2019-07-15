@@ -81,13 +81,85 @@ def co_op_reader():
     print('Receipt no. :', int(receipt_no))
 
 
+def uber_parser():
+
+    print("In uber parser")
+    img = cv2.imread("img/uber/page1.jpg", cv2.IMREAD_GRAYSCALE)
+    sleep(3)
+    # cv2.imshow('img', img)
+    # cv2.waitKey(0)
+    (h, w) = img.shape[:2]
+    # calculate the center of the image
+    center = (w / 2, h / 2)
+
+    angle90 = 90
+    angle180 = 180
+    angle270 = 270
+
+
+    scale = 1.0
+    M = cv2.getRotationMatrix2D(center, angle180, scale)
+    img = cv2.warpAffine(img, M, (w, h))
+    # img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 103, 5)
+    # cv2.imshow('the', img)
+    # cv2.waitKey(0)
+
+
+    data = pytesseract.image_to_string(th3)
+    data = re.sub(r'([\\\+\*\?\[\^\]\(\)\{\}\!\<\>\|\-\|])', '', data)
+
+    # print(data)
+    time = ''
+    company = 'Uber'
+    date = ''
+    subtotal = 0
+    total = 0
+    hst = 0
+
+    if data.__contains__('Uber'):
+
+        date = data.split('Uber')
+        date = date[1].split('\n')
+        date = date[0].strip('\n')
+        print(date)
+
+        words = data.split()
+        print(words)
+
+        for i in range(len(words)):
+
+            if words[i].__contains__("Total"):
+                total = words[i + 1]
+
+            if words[i].__contains__("HST"):
+                hst = words[i + 1]
+
+            if words[i].__contains__("Subtotal"):
+                if words[i + 1] == ',' or words[i + 1] == '.':
+                    subtotal = words[i + 2]
+                else:
+                    subtotal = words[i + 1]
+
+            # time = re.findall(r'am', words[i])
+            if words[i].__contains__("am"):
+                time = words[i]
+
+            if words[i].__contains__("pm"):
+                time = words[i]
+
+    data = [subtotal, hst, total, company, date, time]
+
+    print(data)
+    return data
+
 def uber_reader():
     print("In uber parser")
     # img = cv2.imread(receipt_path)
     # data = pytesseract.image_to_string(img)
     # print(data)
 
-    img = cv2.imread('img/uber/3.jpg', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('img/uber/page1.jpg', cv2.IMREAD_GRAYSCALE)
     # img = cv2.imread('co-op/img20190502_19290242-08.jpg', cv2.IMREAD_GRAYSCALE)
     # img = cv2.imread('co-op/img20190502_19290242-09.jpg', cv2.IMREAD_GRAYSCALE)
 
@@ -399,7 +471,8 @@ def settlement_parser():
 def bell_reader():
     print("In bell parser")
 
-    img = cv2.imread('img/bell/6.jpg', cv2.IMREAD_GRAYSCALE)
+    # img = cv2.imread('img/bell/6.jpg', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('img/bell/bell-12.jpg', cv2.IMREAD_GRAYSCALE)
 
     img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
     th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 103, 5)
@@ -424,26 +497,38 @@ def bell_reader():
     if data.__contains__("Mobility" and 'bell'):
 
         for i in range(len(words)):
-            # words[i].replace('  ', ' ')
 
-            if words[i].__contains__("Total current charges Including taxes"):
-                total = words[i].replace("Total current charges Including taxes", '').strip()
-                # if
+            if words[i].__contains__("Total current charges"):
+                if words[i].__contains__("Total current charges Including taxes"):
+                    total = words[i].replace("Total current charges Including taxes", '')
+                    total_list = total.split(' ')
+                    total = total_list[1]
+                if words[i].__contains__("Total current charges including taxes"):
+                    total = words[i].replace("Total current charges including taxes", '')
+                    total_list = total.split(' ')
+                    total = total_list[1]
+                if words[i].__contains__("Total current charges —_— including taxes"):
+                    total = words[i].replace("Total current charges —_— including taxes", '')
+                    total_list = total.split(' ')
+                    total = total_list[1]
+
+
+                total = total.strip()
+                total = total.strip('«')
 
             if words[i].__contains__("Bill Date"):
                 if "Next Bill Date" not in words[i]:
                     date = words[i].replace("Bill Date", '').strip()
 
-            if words[i].__contains__("Total GST included in this bill"):
-                gst = words[i].replace("Total GST included in this bill", '').strip()
+            if words[i].__contains__("Total GST included in this bill") or words[i].__contains__("Total GST included in this bil"):
+                gst_list = words[i].split(' ')
+                gst = gst_list[-1]
+                gst = gst.strip('«')
 
             if words[i].__contains__("Total HST included in this bill"):
-                hst = words[i].replace("Total HST included in this bill", '').strip()
-
-        # print("total ", total)
-        # print("date ", date)
-        # print("gst ", gst)
-        # print("hst ", hst)
+                hst_list = words[i].split(' ')
+                hst = hst_list[-1]
+                hst = hst.strip('«')
 
         data = [company, total, gst, hst, date]
         print(data)
@@ -503,10 +588,11 @@ def tax_payer():
 def main():
     # co_op_reader()
     # uber_reader()
+    uber_parser()
     # sask_power_reader()
     # amex_reader()
     # settlement_parser()
-    bell_reader()
+    # bell_reader()
     # tax_payers()
 
 if __name__ == '__main__':

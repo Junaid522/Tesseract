@@ -1,20 +1,19 @@
 # Download the helper library from https://www.twilio.com/docs/python/install
 from twilio.rest import Client
 
-
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
 from twilio.twiml.messaging_response import MessagingResponse
 
-account_sid = ''
-auth_token = ''
+account_sid = 'AC923cebe1201f554ab5e35e36e7321cf3'
+auth_token = 'de487555491df27b59f58745e37e2529'
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-         body='This is the ship that made the Kessel Run in fourteen parsecs?',
-         from_='',
-         media_url=['https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg'],
-         to=''
+         body='This is the testing message!!!!',
+         from_='+12055399924',
+         media_url=['https://www.researchgate.net/profile/Visa_Tasic/publication/268802697/figure/fig2/AS:667837232316430@1536236212637/MMS-in-simple-control-system-block-schema.png'],
+         to='+1 647 493 5996'
      )
 
 print(message.sid)

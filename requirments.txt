@@ -1,4 +1,0 @@
-opencv-python
-pytesseract
-Pillow
-scikit-image

@@ -90,14 +90,31 @@ def etr_407_parser(receipt_path):
     print(data)
 
 
+def td_canada_parser(receipt_path):
+    img = cv2.imread(receipt_path, cv2.IMREAD_GRAYSCALE)
+    # cv2.imshow('img', img)
+    # cv2.waitKey(0)
+    # sleep(3)
+    img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 7)
+    img = Image.open(receipt_path, 'r')
+    data = pytesseract.image_to_string(img)
+    data = re.sub(r'([\\\+\*\?\[\^\]\(\)\{\}\!\<\>\|\-\|])', '', data)
+    # data = " ".join(data.split('\n'))
+    data = data.replace("  ", " ")
+    print(data)
+
+
 def main ():
     # receipt_path = 'splitted_pages/page1.jpg'
     # receipt_path = 'splitted_pages/page5.jpg'
     # receipt_path = 'splitted_pages/page11.jpg'
-    receipt_path = 'splitted_pages/page13.jpg'
+    # receipt_path = 'splitted_pages/page13.jpg'
+    receipt_path = 'splitted_pages/page27.jpg'
     # aviva_parser(receipt_path)
-    etr_407_parser(receipt_path)
-
+    # etr_407_parser(receipt_path)
+    # rogers_parser(receipt_path)
+    td_canada_parser(receipt_path)
 
 if __name__ == '__main__':
     main()

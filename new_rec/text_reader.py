@@ -91,18 +91,26 @@ def etr_407_parser(receipt_path):
 
 
 def td_canada_parser(receipt_path):
-    img = cv2.imread(receipt_path, cv2.IMREAD_GRAYSCALE)
+    # img = cv2.imread(receipt_path, cv2.IMREAD_GRAYSCALE)
     # cv2.imshow('img', img)
     # cv2.waitKey(0)
     # sleep(3)
-    img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
-    th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 7)
+    # img = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    # th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 7)
     img = Image.open(receipt_path, 'r')
     data = pytesseract.image_to_string(img)
     data = re.sub(r'([\\\+\*\?\[\^\]\(\)\{\}\!\<\>\|\-\|])', '', data)
     # data = " ".join(data.split('\n'))
     data = data.replace("  ", " ")
-    print(data)
+    # print(data)
+    lines = data.splitlines()
+    for i in range(0, len(lines)):
+        if lines[i].__contains__('NET AMOUNT OF MONTHLY'):
+            print(lines[i])
+        if lines[i].__contains__('TOTAL NEW BALANCE'):
+            print(lines[i])
+        if lines[i].__contains__('STATEMENT DATE: '):
+            print(lines[i])
 
 
 def main ():
@@ -115,6 +123,7 @@ def main ():
     # etr_407_parser(receipt_path)
     # rogers_parser(receipt_path)
     td_canada_parser(receipt_path)
+
 
 if __name__ == '__main__':
     main()

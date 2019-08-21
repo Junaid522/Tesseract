@@ -1,11 +1,8 @@
 from time import sleep
 
 import imutils
-import pytesseract
-import re
 import cv2
 import re
-import glob
 
 try:
     from PIL import Image
@@ -152,6 +149,7 @@ def uber_parser():
 
     print(data)
     return data
+
 
 def uber_reader():
     print("In uber parser")
@@ -645,20 +643,3 @@ if __name__ == '__main__':
 # th3 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,43, 7)
 # th3 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,93, 7)
 # th3 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,103, 2)
-
-
-
-
-# cv2.imshow('rotated', th3)
-# cv2.imshow('rotated', thresh2)
-# cv2.waitKey(0)
-
-
-# img = cv2.resize(img, (1030, 2048))
-# cv2.imshow('img', img)
-# cv2.waitKey(0)
-
-# data = pytesseract.image_to_string(th3)
-
-# data = re.sub(r'([\§\|\-\|\—])', '', data)
-# print(data)

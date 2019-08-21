@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
+
 handle = input('Input your account name on Twitter: ')
 ctr = int(input('Input number of tweets to scrape: '))
-res=requests.get('https://twitter.com/'+ handle)
-bs=BeautifulSoup(res.content,'lxml')
+res = requests.get('https://twitter.com/search?q='+ handle)
+bs = BeautifulSoup(res.content,'lxml')
+
 all_tweets = bs.find_all('div',{'class':'tweet'})
 if all_tweets:
   for tweet in all_tweets[:ctr]:

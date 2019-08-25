@@ -87,14 +87,7 @@ def etr_407_parser(receipt_path):
     data = re.sub(r'([\\\+\*\?\[\^\]\(\)\{\}\!\<\>\|\-\|])', '', data)
     # data = " ".join(data.split('\n'))
     data = data.replace("  ", " ")
-    # print(data)
-    lines = data.splitlines()
-    for i in range(0, len(lines)):
-        if lines[i].__contains__('See page 2 for details'):
-            # print(lines[i])
-            words = lines[i].split(' ')
-            word = words[-1]
-            print(word)
+    print(data)
 
 
 def td_canada_parser(receipt_path):
@@ -125,11 +118,11 @@ def main ():
     # receipt_path = 'splitted_pages/page5.jpg'
     # receipt_path = 'splitted_pages/page11.jpg'
     # receipt_path = 'splitted_pages/page13.jpg'
-    receipt_path = 'splitted_pages/page70.jpg'
+    receipt_path = 'splitted_pages/page27.jpg'
     # aviva_parser(receipt_path)
-    etr_407_parser(receipt_path)
+    # etr_407_parser(receipt_path)
     # rogers_parser(receipt_path)
-    # td_canada_parser(receipt_path)
+    td_canada_parser(receipt_path)
 
 
 if __name__ == '__main__':

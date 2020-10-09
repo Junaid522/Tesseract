@@ -2,12 +2,13 @@ from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup
 
-headers={'User-Agent':'PostmanRuntime/7.11.0'}
+# headers={'User-Agent':'PostmanRuntime/7.11.0'}
 
 headers = {'User_Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}
 
-url = u'https://twitter.com/search?q='
-query = u'hashtag'
+url = u'https://www.sefamerve.com/en/k/islamic-clothing/tunic?sort=1_0'
+# query = u'hashtag'
+r = requests.get(url)
 # r = requests.get(url + query)
 req = requests.get(url, headers=headers)
 print(req.status_code)

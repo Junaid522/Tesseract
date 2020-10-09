@@ -80,28 +80,167 @@
 #     return [partial(mul, i) for i in range(5)]
 #
 # print create_multipliers()
-
-
 import random
 
 
+# def lottery():
+#
+#     # returns 6 numbers between 1 and 40
+#     for i in range(6):
+#
+#         yield i
+#     # returns a 7th number between 1 and 15
+#
+#     yield 15
+#     yield 20
+#
+#
+# for random_number in lottery():
+#     print("And the next number is... %d!" %(random_number))
+# from functools import reduce
+#
+# number = 2345
+#
+# result = 1
+#
+# while number > 0:
+#     result *= int(number % 10)
+#     number = int(number / 10)
+#
+# print(result)
+#
+#
+# str_var = 'teeth'
+# str_list = []
+# for s in str_var:
+#     if s in str_list:
+#         str_list.remove(s)
+#     str_list.append(s)
+#
+# print("".join(str_list))
+#
+#
+# li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+# final_list = list(filter(lambda x: x % 2 != 0, li))
+# print(final_list)
+#
+# final_list = list(map(lambda x: x*2, li))
+# print(final_list)
+#
+# summation = reduce(lambda x, y: x + y, li)
+#
+# print(summation)
+#
+#
+# def uppercase_decorator(function):
+#     def wrapper():
+#         func = function()
+#         make_uppercase = func.upper()
+#         return make_uppercase
+#
+#     return wrapper
+#
+#
+# @uppercase_decorator
+# def say_hi():
+#     return 'hello there'
+#
+# print(say_hi())
+#
+#
+# def split_string(function):
+#     def wrapper():
+#         func = function()
+#         splitted_string = func.split()
+#         return splitted_string
+#
+#     return wrapper
+#
+#
+# @split_string
+# @uppercase_decorator
+# def say_hi():
+#     return 'hello there'
+#
+#
+# print(say_hi())
+#
+#
+# class A(object):
+#     def foo(self, x):
+#         print("executing foo(%s, %s)" % (self, x))
+#
+#     @classmethod
+#     def class_foo(cls, x):
+#         print("executing class_foo(%s, %s)" % (cls, x))
+#
+#     @staticmethod
+#     def static_foo(x):
+#         print("executing static_foo(%s)" % x)
+#
+# a = A()
+# print(a.foo(3))
+#
+# print(a.class_foo(4))
+#
+# print(a.static_foo(6))
 
-def lottery():
 
-    # returns 6 numbers between 1 and 40
+def isPrime(n, i=2):
+    if n <= 2:
+        return True if n == 2 else False
 
-    for i in range(6):
+    elif n - (i * (n//i)) == 0:
+        return False
 
-        yield i
+    elif i*i > n:
+        return True
 
-
-
-    # returns a 7th number between 1 and 15
-
-    yield 15
-
+    return isPrime(n, i+1)
 
 
-for random_number in lottery():
+# print(isPrime(5))
 
-       print("And the next number is... %d!" %(random_number))
+# print(isPrime(6))
+
+# print(isPrime(9))
+
+
+a = 'abc'
+b=a
+print(id(a) == id(b))
+
+def is_possible(n, m, k):
+    brick5 = k // n
+    brick1 = k - brick5 * 5
+    print(brick5)
+    print(brick1)
+
+    if brick5 * 5 + brick1 == k:
+        return True
+    return False
+
+
+print(is_possible(5, 1, 13))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

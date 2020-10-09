@@ -6,7 +6,7 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
 
-pages_to_delete = [2] # page numbering starts from 0
+pages_to_delete = [] # page numbering starts from 0
 infile = PdfFileReader('RESUME.pdf', 'rb')
 output = PdfFileWriter()
 

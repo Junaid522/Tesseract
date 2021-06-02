@@ -134,7 +134,7 @@ twilio==6.29.1
 Twisted==20.3.0
 txt2txt==1.0.9
 uritemplate==3.0.0
-urllib3==1.25.3
+urllib3==1.26.5
 us==2.0.2
 w3lib==1.22.0
 wasabi==0.7.0

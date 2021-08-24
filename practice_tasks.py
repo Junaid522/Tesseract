@@ -32,26 +32,26 @@
 
 #
 # d = D()
-#
+# print(d.whereiam())
 # print(D.mro())
 #
 # D().whereiam()
 
 
-# pass by reference
+## pass by reference
 # def abc(e,bb=[]):
 #   bb.append(e)
 #   return bb
+#
+# print(abc(2))
+# print(abc(3))
+# print(abc(2))
+# print(abc(2,[]))
 
-# print abc(2)
-# print abc(3)
-# print abc(2
-# print abc(2,[])
-
-# lambda functions
+## lambda functions
 # def create_multipliers():
 #     return [lambda x : i * x for i in range(5)]
-#
+
 # for multiplier in create_multipliers():
 #     print(multiplier(2))
 #
@@ -81,7 +81,6 @@
 #
 # print create_multipliers()
 import random
-
 
 # def lottery():
 #
@@ -186,17 +185,17 @@ import random
 # print(a.static_foo(6))
 
 
-def isPrime(n, i=2):
-    if n <= 2:
-        return True if n == 2 else False
-
-    elif n - (i * (n//i)) == 0:
-        return False
-
-    elif i*i > n:
-        return True
-
-    return isPrime(n, i+1)
+# def isPrime(n, i=2):
+#     if n <= 2:
+#         return True if n == 2 else False
+#
+#     elif n - (i * (n//i)) == 0:
+#         return False
+#
+#     elif i*i > n:
+#         return True
+#
+#     return isPrime(n, i+1)
 
 
 # print(isPrime(5))
@@ -206,41 +205,82 @@ def isPrime(n, i=2):
 # print(isPrime(9))
 
 
-a = 'abc'
-b=a
-print(id(a) == id(b))
-
-def is_possible(n, m, k):
-    brick5 = k // n
-    brick1 = k - brick5 * 5
-    print(brick5)
-    print(brick1)
-
-    if brick5 * 5 + brick1 == k:
-        return True
-    return False
-
-
-print(is_possible(5, 1, 13))
+# a = 'abc'
+# b=a
+# print(id(a) == id(b))
+#
+# def is_possible(n, m, k):
+#     brick5 = k // n
+#     brick1 = k - brick5 * 5
+#     print(brick5)
+#     print(brick1)
+#
+#     if brick5 * 5 + brick1 == k:
+#         return True
+#     return False
 
 
+# print(is_possible(5, 1, 13))
 
 
+# def gen():
+#     l = range(6)
+#     for i in l:
+#         yield i * i
+#
+#
+# for i in gen():
+#     print(i)
 
 
+# x = [{'a': 1}, {'b': 2}, {'c': 3}]
+# hell = [i[list(i.keys())[0]] for i in x]
+#
+# print(hell)
 
 
+# def string_uppercase(function):
+#     def funcwrapper():
+#         func = function()
+#         upper_case = func.upper()
+#         return upper_case
+#
+#
+# @string_uppercase
+# def string_maker():
+#     print('kilometer')
+#
+# string_maker()
 
 
+# l = [x for x in range(5)]
+# print(l)
+
+# fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+#
+# new_list = [x.__contains__('a') for x in fruits]
+#
+# palindrome = 'wasamhdadbqkokhfaafl'
+
+# def find_plaindromes():
+#     new_list = []
+#     for i in palindrome:
+#
+
+# def foo(n):
+#
+#     return n
+#
+# fun = foo(3)
+# res = fun(5)
+# 5*3
+# 15
 
 
+# def is_palindrome(str):
+#     new_str = str[len(str)/2]
 
 
-
-
-
-
-
-
+# print(new_list)
 
 

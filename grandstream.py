@@ -82,12 +82,12 @@ def getSystemGeneralStatus(url, api_cookie):
 
     data = {
         "request": {
-            "action": "cdrapi",  # it will fetch phone records, or recordfile mey file ka name hoga in case of voicemail
-            # "action": "recapi", # it will fetch audio files if exists, phr hum append kren gy rec api mey name ko
+            # "action": "cdrapi",  # it will fetch phone records, or recordfile mey file ka name hoga in case of voicemail
+            "action": "recapi", # it will fetch audio files if exists, phr hum append kren gy rec api mey name ko
             "cookie": api_cookie,
             "format": "json",
             # "filedir": "voicemail",
-            # "filedir": "meetme"
+            "filedir": "meetme",
             # "filename": "auto-1589836368-1000-011972595610600.wav"
             "startTime": "2021-03-01T00:00:00-06:00",
             "endTime": date_time,
@@ -174,6 +174,7 @@ def read_json():
 if __name__ == '__main__':
     url = 'https://72.137.146.94:8089/api'
     api_cookie = login(url)
+    print(api_cookie)
     if api_cookie:
         getSystemGeneralStatus(url, api_cookie)
     # read_json()

@@ -16,7 +16,7 @@ from tqdm import tqdm
 # TOKEN = 'liifgMMYRkUAAAAAAAAAAQnhEnwjFsWmp_ZiAOgXp4cxA6fpYN5nkP8vHK-Fvuhp'
 TOKEN = 'OAt0iYRp0hQAAAAAAAAAAfR5rHKLsR19bnKgMVObsbn32tOb6AjewDZXYuXenedA'
 
-LOCALFILE = '23-08-2021.sql'
+LOCALFILE = '02-09-2021.sql'
 # BACKUPPATH = 'User/junaidtariq/PycharmProjects/Tesseract/my-file-backup.txt'
 
 
@@ -60,9 +60,9 @@ def backup():
     with open(LOCALFILE, 'rb') as f:
         # We use WriteMode=overwrite to make sure that the settings in the file
         # are changed on upload
-        print("Uploading " + LOCALFILE + " to Dropbox as 23-08-2021.sql ...")
+        print("Uploading " + LOCALFILE + " to Dropbox as 02-09-2021.sql ...")
         try:
-            dbx.files_upload(f.read(), '/23-08-2021.sql', mode=WriteMode('overwrite'))
+            dbx.files_upload(f.read(), '/02-09-2021.sql', mode=WriteMode('overwrite'))
         except ApiError as err:
             # This checks for the specific error where a user doesn't have
             # enough Dropbox space quota to upload this file

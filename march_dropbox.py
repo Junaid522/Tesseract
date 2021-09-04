@@ -55,7 +55,6 @@ def upload(chunk_size=4 * 1024 * 1024,):
                     pbar.update(chunk_size)
 
 
-
 # Uploads contents of LOCALFILE to Dropbox
 def backup():
     with open(LOCALFILE, 'rb') as f:

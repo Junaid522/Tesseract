@@ -70,7 +70,7 @@ networkx==2.3
 nltk==3.5
 numpy==1.16.4
 opencage==1.2.1
-opencv-python==4.1.0.25
+opencv-python==4.1.1.26
 pandas==0.25.1
 parsel==1.6.0
 pdf2image==1.6.0

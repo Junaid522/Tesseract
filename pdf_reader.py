@@ -6,8 +6,8 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
 
-pages_to_delete = [] # page numbering starts from 0
-infile = PdfFileReader('RESUME.pdf', 'rb')
+pages_to_delete = [1] # page numbering starts from 0
+infile = PdfFileReader('TalhaMobinResume.pdf', 'rb')
 output = PdfFileWriter()
 
 for i in range(infile.getNumPages()):
@@ -15,7 +15,7 @@ for i in range(infile.getNumPages()):
         p = infile.getPage(i)
         output.addPage(p)
 
-with open('Junaid_CV.pdf', 'wb') as f:
+with open('TalhaMobinResume_updated.pdf', 'wb') as f:
     output.write(f)
 
 

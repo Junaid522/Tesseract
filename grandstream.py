@@ -82,12 +82,12 @@ def getSystemGeneralStatus(url, api_cookie):
 
     data = {
         "request": {
-            # "action": "cdrapi",  # it will fetch phone records, or recordfile mey file ka name hoga in case of voicemail
-            "action": "recapi", # it will fetch audio files if exists, phr hum append kren gy rec api mey name ko
+            "action": "cdrapi",  # it will fetch phone records, or recordfile mey file ka name hoga in case of voicemail
+            # "action": "recapi", # it will fetch audio files if exists, phr hum append kren gy rec api mey name ko
             "cookie": api_cookie,
             "format": "json",
             # "filedir": "voicemail",
-            "filedir": "meetme",
+            # "filedir": "meetme",
             # "filename": "auto-1589836368-1000-011972595610600.wav"
             "startTime": "2021-03-01T00:00:00-06:00",
             "endTime": date_time,
@@ -129,11 +129,11 @@ def getSystemGeneralStatus(url, api_cookie):
     #                             print(value['recordfiles'])
         # print(res.content)
         # Serializing json
-        # json_object = json.dumps(res.text, indent=4)
+        json_object = json.dumps(res.text, indent=4)
 
         # Writing to sample.json
-        # with open("grandstream_updated_0.json", "w") as outfile:
-        #     outfile.write(res.text)
+        with open("grandstream_updated_0.csv", "w") as outfile:
+            outfile.write(json_object)
         # if r['status'] == 0:
         # for i in r.get('cdr_root'):
             # if i.get("lastdata") == "VoiceMailMain":

@@ -51,7 +51,7 @@ PASS = "u81v0mi6yh4c7h4u"
 HOST = "yogiassociatesdb-do-user-4783558-0.a.db.ondigitalocean.com"
 DB = "ya_database"
 port = "25060"
-command = "PGPASSWORD=j9xwaimz5o4ujvue pg_dump -U doadmin -h prdb-do-user-4783558-0.b.db.ondigitalocean.com -p 25060 -d ya_database --file /Users/junaidtariq/PycharmProjects/TeeserAct/02-09-2021.sql"
+command = "PGPASSWORD=j9xwaimz5o4ujvue pg_dump -U doadmin -h prdb-do-user-4783558-0.b.db.ondigitalocean.com -p 25060 -d ya_database --file /Users/junaidtariq/PycharmProjects/TeeserAct/07-10-2021.sql"
 os.system(command)
 
 

@@ -131,7 +131,7 @@ termcolor==1.1.0
 thinc==7.4.1
 tqdm==4.47.0
 twilio==6.29.1
-Twisted==20.3.0
+Twisted==22.2.0
 txt2txt==1.0.9
 uritemplate==3.0.0
 urllib3==1.25.3

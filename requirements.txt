@@ -93,7 +93,7 @@ pyOpenSSL==19.1.0
 pyOutlook==4.2.2
 pyparsing==2.4.0
 pypcapkit==0.14.5
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyresparser==1.0.6
 pyrsistent==0.16.0
 PySocks==1.7.0

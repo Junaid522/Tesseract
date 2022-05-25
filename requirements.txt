@@ -88,7 +88,7 @@ pycryptodome==3.9.8
 PyDispatcher==2.0.5
 pydload==1.0.5
 PyHamcrest==2.0.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyOpenSSL==19.1.0
 pyOutlook==4.2.2
 pyparsing==2.4.0

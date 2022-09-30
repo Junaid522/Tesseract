@@ -55,7 +55,7 @@ itemadapter==0.1.0
 itemloaders==1.0.2
 jellyfish==0.6.1
 jmespath==0.10.0
-joblib==0.13.2
+joblib==1.2.0
 jsonschema==3.2.0
 Keras==2.2.4
 Keras-Applications==1.0.8
